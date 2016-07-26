@@ -10,7 +10,7 @@ function convertToPercent(num) {
   return (num * 100.0).toFixed(2);
 }
 
-function getTaxAmount(income) {
+function getTaxAmounts(income) {
   return brackets.map(function(bracket, index) {
     var prevMaxAmount = index > 0 ? brackets[index-1].maxAmount : 0;
     var amountToTax = Math.min(income - prevMaxAmount, bracket.maxAmount - prevMaxAmount);
@@ -21,7 +21,7 @@ function getTaxAmount(income) {
 
 function doTax(income) {
   console.log('\n=== Calculating the Tax on an income of %s ===', income);
-  var taxAmounts = getTaxAmount(income);
+  var taxAmounts = getTaxAmounts(income);
   console.log('taxAmounts:', taxAmounts);
   var totalTax = taxAmounts.reduce(function(a, b) { return a + b; });
   var effectiveRate = totalTax / income;
