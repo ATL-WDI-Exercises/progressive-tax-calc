@@ -27,8 +27,9 @@ function getTaxAmount(income) {
 }
 
 function doTax(income) {
+  console.log('\n=== Calculating the Tax on an income of %s ===', income);
   var tax = getTaxAmount(income);
-  var effectiveRate = tax / income * 100;
+  var effectiveRate = tax / income;
   console.log('The tax on $%s is $%s which is an effectiveRate of %s%',
     income, tax, convertToPercent(effectiveRate));
 }
